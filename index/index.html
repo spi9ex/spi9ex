@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Personal website with customizable themes and interactive features.">
+    <meta name="keywords" content="personal, website, themes, interactive">
+    <title>spi9ex - Version 1.0</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="spi9ex.png">
+    <style>
+
+        /* Global Styles */
+        body {
+            font-family: 'Poppins', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            background-color: #181818;
+            color: #f0f0f0;
+            overflow-x: hidden;
+        }
+
+        header {
+            background-color: #1f1f1f;
+            color: #f9f9f9;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        header h2 {
+            font-size: 36px;
+            margin: 0;
+            animation: slideIn 1s ease-in-out;
+        }
+
+        header h3 {
+            font-size: 20px;
+            margin: 0;
+            font-weight: 300;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        nav {
+            background-color: #222;
+            text-align: center;
+            padding: 10px 0;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        nav a {
+            color: #f9f9f9;
+            text-decoration: none;
+            padding: 10px 20px;
+            display: inline-block;
+            transition: color 0.3s ease, background-color 0.3s ease;
+        }
+
+        nav a:hover {
+            background-color: #007bff;
+            color: #fff;
+            border-radius: 5px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #222;
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+            color: inherit;
+            animation: fadeInUp 0.5s ease-in-out;
+        }
+
+        button {
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            background-color: #007bff;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .menu-btn {
+            cursor: pointer;
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 999;
+            color: #007bff;
+            font-size: 24px;
+        }
+
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: -300px;
+            width: 300px;
+            height: 100%;
+            background: #1f1f1f;
+            transition: left 0.3s ease-in-out;
+            z-index: 998;
+            padding-top: 60px;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.3);
+        }
+
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .sidebar ul li {
+            padding: 15px;
+            border-bottom: 1px solid #333;
+        }
+
+        .sidebar ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 18px;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            cursor: pointer;
+            color: #fff;
+            font-size: 24px;
+        }
+
+        .theme-selector {
+            text-align: center;
+            margin: 20px 0;
+            padding: 10px;
+            background-color: #1f1f1f;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            animation: fadeInDown 0.5s ease-in-out;
+        }
+
+        .theme-selector button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            margin: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            color: #fff;
+        }
+
+        .theme-light {
+            background-color: #f0f0f0;
+            color: #000;
+        }
+
+        .theme-dark {
+            background-color: #181818;
+            color: #f0f0f0;
+        }
+
+        .theme-blue {
+            background-color: #007bff;
+            color: #fff;
+        }
+
+        .theme-green {
+            background-color: #28a745;
+            color: #fff;
+        }
+
+        .theme-white-gold {
+            background-color: #fff;
+            color: #d4af37;
+        }
+
+        .theme-black-purple {
+            background-color: #000;
+            color: #800080;
+        }
+
+        footer {
+            background-color: #1f1f1f;
+            color: #f9f9f9;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 20px;
+            box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 14px;
+        }
+
+        .review-section {
+            border: 1px solid #333;
+            padding: 20px;
+            margin: 20px 0;
+            background-color: #222;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            color: inherit;
+        }
+
+        .review-title {
+            font-size: 22px;
+            font-weight: bold;
+            color: #007bff;
+        }
+
+        .review-text {
+            margin-top: 10px;
+            font-size: 16px;
+        }
+
+        .reviewer-info {
+            margin-top: 10px;
+            font-style: italic;
+            color: #bbb;
+        }
+
+        .audio-player {
+            margin-bottom: 20px;
+        }
+
+        .audio-player h3 {
+            margin: 10px 0;
+        }
+
+        @keyframes slideIn {
+            0% {
+                transform: translateX(-100%);
+                opacity: 0;
+            }
+            100% {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeInUp {
+            0% {
+                transform: translateY(20px);
+                opacity: 0;
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeInDown {
+            0% {
+                transform: translateY(-20px);
+                opacity: 0;
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+    </style>
+    <script src="https://www.google.com/recaptcha/enterprise.js?render=6Lf2sCwqAAAAAJp3dE26s7Q2rIq0K8bwlL2cMTeC"></script>
+</head>
+
+<body>
+    <header>
+        <h2>spi9ex</h2>
+        <h3>Version - 1.0</h3>
+    </header>
+
+    <div class="theme-selector">
+        <button class="theme-light" onclick="changeTheme('theme-light')">Light Theme</button>
+        <button class="theme-dark" onclick="changeTheme('theme-dark')">Dark Theme</button>
+        <button class="theme-blue" onclick="changeTheme('theme-blue')">Blue Theme</button>
+        <button class="theme-green" onclick="changeTheme('theme-green')">Green Theme</button>
+        <button class="theme-white-gold" onclick="changeTheme('theme-white-gold')">White and Gold Theme</button>
+        <button class="theme-black-purple" onclick="changeTheme('theme-black-purple')">Black and Purple Theme</button>
+    </div>
+
+    <div class="menu-btn" onclick="toggleSidebar()">&#8942;</div>
+    <div class="sidebar" id="sidebar">
+        <div class="close-btn" onclick="toggleSidebar()">&#10006;</div>
+        <ul>
+            <li><a href="#home">HOME</a></li>
+            <li><a href="#about">ABOUT</a></li>
+            <li><a href="#song">SONG</a></li>
+            <li><a href="#review">REVIEWS</a></li>
+            <li><a href="#join">JOIN</a></li>
+            <li><a href="#updates">UPDATES</a></li>
+        </ul>
+    </div>
+
+    <section id="home" class="container">
+        <p>This website is created by Tanvir</p>
+        <h5>Inspired by two people: Shafin (brother) and Sanjit (teacher).</h5>
+        <h2>Click the button and subscribe to my channel.</h2>
+        <button onclick="welcome()">Subscribe To My Channel</button>
+
+        <p>My Subscribers</p>
+        <progress value="53" max="1000"></progress>
+    </section>
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7356449232546415"
+    crossorigin="anonymous"></script>
+    
+    <section id="about" class="container">
+        <h2>About Me</h2>
+        <p>I am a 13 years old boy.</p>
+        <p>I love to eat Dall-Bhat.</p>
+        <p>My hobbies include playing and coding.</p>
+    </section>
+
+    <section id="song" class="container">
+        <h2>My Favorite Songs</h2>
+        <div class="audio-player">
+            <h3>Tu Hai Kahan</h3>
+            <audio controls>
+                <source src="Tu Hai Kahan Uraan_128-(DJPunjab).mp3" type="audio/mpeg">
+            </audio>
+        </div>
+        <div class="audio-player">
+            <h3>Shikayat</h3>
+            <audio controls>
+                <source src="Shikayat(PaglaSongs).mp3" type="audio/mpeg">
+            </audio>
+        </div>
+        <div class="audio-player">
+            <h3>Husn</h3>
+            <audio controls>
+                <source src="Husn(PaglaSongs).mp3" type="audio/mpeg">
+            </audio>
+        </div>
+        <div class="audio-player">
+            <h3>Chaleya</h3>
+            <audio controls>
+                <source src="Chaleya(PagalWorld.com.se).mp3" type="audio/mpeg">
+            </audio>
+        </div>
+    </section>
+
+    <section id="review" class="container">
+        <h2>Reviews</h2>
+        <div class="review-section">
+            <div class="review-title">Awesome Website!</div>
+            <div class="review-text">I love the themes and the simplicity of the website.</div>
+            <div class="reviewer-info">- John Doe</div>
+        </div>
+        <div class="review-section">
+            <div class="review-title">Great Design!</div>
+            <div class="review-text">The site is user-friendly and looks great.</div>
+            <div class="reviewer-info">- Jane Smith</div>
+        </div>
+    </section>
+
+    <section id="join" class="container">
+        <h2>Join My Team</h2>
+        <form id="joinForm" action="https://spi9ex.netlify.app/submit_form.php" method="post" onsubmit="onClick(event)">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+            <div class="g-recaptcha" data-sitekey="6Lf2sCwqAAAAAJp3dE26s7Q2rIq0K8bwlL2cMTeC"></div>
+            <input type="submit" value="Join">
+        </form>
+    </section>
+
+    <section id="updates" class="container">
+        <h2>Updates</h2>
+        <ul>
+            <li>Version 1.0 - Added more theme options, integrated reCAPTCHA, and improved design.</li>
+            <li>Version 0.6 - Added theme selector and fixed various issues.</li>
+            <li>Version 0.5 - Added reviews section and improved layout.</li>
+            <li>Version 0.4 - Initial theme settings and audio features added.</li>
+        </ul>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 spi9ex. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            sidebar.style.left = sidebar.style.left === '0px' ? '-300px' : '0px';
+        }
+
+        function changeTheme(theme) {
+            document.body.className = theme;
+        }
+
+        function welcome() {
+            alert('Thank you for subscribing to my channel!');
+        }
+
+        function onClick(e) {
+            e.preventDefault();
+            grecaptcha.enterprise.ready(async () => {
+                const token = await grecaptcha.enterprise.execute('6Lf2sCwqAAAAAJp3dE26s7Q2rIq0K8bwlL2cMTeC', { action: 'JOIN' });
+                document.getElementById('joinForm').submit();
+            });
+        }
+    </script>
+</body>
+
+</html>
